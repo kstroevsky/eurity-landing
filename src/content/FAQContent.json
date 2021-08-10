@@ -1,0 +1,23 @@
+{
+    "title": "FAQ",
+    "info": "Do you have any questions?",
+    "text": "You can ask them in our community",
+    "section": [
+        {
+          "title": "Question",
+          "content": "AnswerAnswer AnswerAnswer AnswerAnswer AnswerAnswer AnswerAnswer AnswerAnswer AnswerAnswer AnswerAnswer AnswerAnswer AnswerAnswer AnswerAnswer AnswerAnswer AnswerAnswer AnswerAnswer AnswerAnswer AnswerAnswer AnswerAnswer AnswerAnswer AnswerAnswer AnswerAnswer AnswerAnswer AnswerAnswer AnswerAnswer AnswerAnswer AnswerAnswer AnswerAnswer AnswerAnswer AnswerAnswer AnswerAnswer AnswerAnswer AnswerAnswer AnswerAnswer AnswerAnswer AnswerAnswer AnswerAnswer AnswerAnswer "
+        },
+        {
+            "title": "Question",
+            "content": "Answer"
+        },
+        {
+            "title": "Question",
+            "content": "Answer"
+        },
+        {
+            "title": "Question",
+            "content": "Answer"
+        }
+      ]
+}

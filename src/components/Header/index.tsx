@@ -14,6 +14,7 @@ import {
   Label,
   Outline,
   Span,
+  Title
 } from "./styles";
 
 const Header = ({ t }: any) => {
@@ -35,6 +36,12 @@ const Header = ({ t }: any) => {
       });
       setVisibility(false);
     };
+
+    const goTo = (link: string) => {
+      window.location.href = link; 
+      return null;
+    }
+    
     return (
       <>
         <CustomNavLinkSmall onClick={() => scrollTo("about")}>
@@ -48,10 +55,10 @@ const Header = ({ t }: any) => {
         </CustomNavLinkSmall>
         <CustomNavLinkSmall
           style={{ width: "180px" }}
-          onClick={() => scrollTo("contact")}
+          onClick={() => goTo("https://app.eurity.com")}
         >
           <Span>
-            <Button>{t("Contact")}</Button>
+            <Button>{t("Go to App")}</Button>
           </Span>
         </CustomNavLinkSmall>
       </>
@@ -63,7 +70,7 @@ const Header = ({ t }: any) => {
       <Container>
         <Row justify="space-between">
           <LogoContainer to="/" aria-label="homepage">
-            <SvgIcon src="logo.svg" width="101px" height="64px" />
+            <Title>{t("Eurity")}</Title>
           </LogoContainer>
           <NotHidden>
             <MenuItem />

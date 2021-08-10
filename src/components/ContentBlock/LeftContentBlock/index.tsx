@@ -13,9 +13,13 @@ import {
 } from "./styles";
 
 const LeftContentBlock = ({
-  icon,
   title,
   content,
+  icon,
+  title1,
+  content1,
+  title2,
+  content2,
   section,
   t,
   id,
@@ -23,28 +27,56 @@ const LeftContentBlock = ({
   return (
     <LeftContentSection>
       <Fade direction="left">
+        {title ? <h6 style={{textAlign:'center'}}>{title}</h6> : <></> }
         <Row justify="space-between" align="middle" id={id}>
           <Col lg={11} md={11} sm={12} xs={24}>
-            <SvgIcon src={icon} width="100%" height="100%" />
+            <ContentWrapper>
+              <div className='textCard'>
+                <h6>{t(title1)}</h6>
+                <Content>{t(content1)}</Content>
+                <ServiceWrapper>
+                  <Row justify="center" style={{alignContent: "stretch"}}>
+                    {typeof section === "object" &&
+                      section.map((item: any, id: number) => {
+                        if ((id+1)%2 !== 0) {
+                          return (
+                            <Col key={id} span={16} style={{minHeight:"18em"}}>
+                              <SvgIcon src={item.icon} width="60px" height="60px" />
+                              <MinTitle>{t(item.title)}</MinTitle>
+                              <MinPara>{t(item.content)}</MinPara>
+                            </Col>
+                          );
+                        }
+                      })}
+                  </Row>
+                </ServiceWrapper>
+              </div>
+            </ContentWrapper>
           </Col>
           <Col lg={11} md={11} sm={11} xs={24}>
             <ContentWrapper>
-              <h6>{t(title)}</h6>
-              <Content>{t(content)}</Content>
-              <ServiceWrapper>
-                <Row justify="space-between">
-                  {typeof section === "object" &&
-                    section.map((item: any, id: number) => {
-                      return (
-                        <Col key={id} span={11}>
-                          <SvgIcon src={item.icon} width="60px" height="60px" />
-                          <MinTitle>{t(item.title)}</MinTitle>
-                          <MinPara>{t(item.content)}</MinPara>
-                        </Col>
-                      );
-                    })}
-                </Row>
-              </ServiceWrapper>
+              <div className='textCard'>
+                <h6>{t(title2)}</h6>
+                <Content>{t(content2)}</Content>
+                <ServiceWrapper>
+                  <Row justify="center" style={{alignItems: "flex-start"}} >
+                    {typeof section === "object" &&
+                      section.map((item: any, id: number) => {
+                        
+                        if ((id+1)%2 === 0) {
+                          console.log(id)
+                          return (
+                            <Col key={id} span={16} style={{minHeight:"18em"}}>
+                              <SvgIcon src={item.icon} width="60px" height="60px" />
+                              <MinTitle>{t(item.title)}</MinTitle>
+                              <MinPara>{t(item.content)}</MinPara>
+                            </Col>
+                          );
+                        }
+                      })}
+                  </Row>
+                </ServiceWrapper>
+              </div>
             </ContentWrapper>
           </Col>
         </Row>

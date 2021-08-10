@@ -1,12 +1,12 @@
 {
-  "title": "Landing page template for developers & startups",
-  "text": "Beautifully designed templates using React.js, ant design and styled-components! Save weeks of time and build your landing page in minutes.",
+  "title": "Borrow euro-pegged stablecoin against MATIC. No custody.",
+  "text": "Fully decentralized and backed by most liquid Polygon assets.",
   "button": [
     {
-      "title": "Explore"
+      "title": "Deposit MATIC"
     },
     {
-      "title": "Learn more",
+      "title": "Use cases",
       "color": "#fff"
     }
   ]

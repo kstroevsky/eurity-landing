@@ -1,16 +1,16 @@
 import { lazy } from "react";
 import IntroContent from "../../content/IntroContent.json";
-import MiddleBlockContent from "../../content/MiddleBlockContent.json";
+import mEURERTYBlockContent from "../../content/mEURERTYContent.json";
 import AboutContent from "../../content/AboutContent.json";
 import MissionContent from "../../content/MissionContent.json";
 import ProductContent from "../../content/ProductContent.json";
 import ContactContent from "../../content/ContactContent.json";
+import FAQContent from "../../content/FAQContent.json";
 
-const Contact = lazy(() => import("../../components/ContactForm"));
-const MiddleBlock = lazy(() => import("../../components/MiddleBlock"));
 const Container = lazy(() => import("../../common/Container"));
 const ScrollToTop = lazy(() => import("../../common/ScrollToTop"));
 const ContentBlock = lazy(() => import("../../components/ContentBlock"));
+const FAQ = lazy(() => import("../../components/ContentBlock/FAQ"));
 
 const Home = () => {
   return (
@@ -24,37 +24,28 @@ const Home = () => {
         icon="developer.svg"
         id="intro"
       />
-      <MiddleBlock
-        title={MiddleBlockContent.title}
-        content={MiddleBlockContent.text}
-        button={MiddleBlockContent.button}
-      />
       <ContentBlock
         type="left"
-        title={AboutContent.title}
-        content={AboutContent.text}
-        section={AboutContent.section}
-        icon="graphs.svg"
-        id="about"
-      />
-      <ContentBlock
-        type="right"
-        title={MissionContent.title}
-        content={MissionContent.text}
+        title1={mEURERTYBlockContent.title1}
+        content1={mEURERTYBlockContent.text1}
+        title2={mEURERTYBlockContent.title2}
+        content2={mEURERTYBlockContent.text2}
         icon="product-launch.svg"
         id="mission"
       />
       <ContentBlock
         type="left"
-        title={ProductContent.title}
-        content={ProductContent.text}
-        icon="waving.svg"
-        id="product"
+        title={AboutContent.title}
+        section={AboutContent.section}
+        icon="graphs.svg"
+        id="about"
       />
-      <Contact
-        title={ContactContent.title}
-        content={ContactContent.text}
-        id="contact"
+      <FAQ
+        info={FAQContent.info}
+        title={FAQContent.title}
+        content={FAQContent.text}
+        section={FAQContent.section}
+        id="faq"
       />
     </Container>
   );

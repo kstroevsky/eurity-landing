@@ -4,6 +4,7 @@ import { SvgIcon } from "../../../common/SvgIcon";
 import { Button } from "../../../common/Button";
 import { ContentBlockProps } from "../types";
 import { Fade } from "react-awesome-reveal";
+import { WaveComponent } from '../../canvas/WaveBackground';
 import {
   RightBlockContainer,
   Content,
@@ -29,7 +30,8 @@ const RightBlock = ({
     <RightBlockContainer>
       <Fade direction="right">
         <Row justify="space-between" align="middle" id={id}>
-          <Col lg={11} md={11} sm={11} xs={24}>
+          <Col lg={24} md={24} sm={24} xs={24}>
+            {id == 'intro' ? <WaveComponent width={window.innerWidth*1.5} height={window.innerHeight}/> : ''}
             <ContentWrapper>
               <h6>{t(title)}</h6>
               <Content>{t(content)}</Content>
@@ -49,9 +51,6 @@ const RightBlock = ({
                   })}
               </ButtonWrapper>
             </ContentWrapper>
-          </Col>
-          <Col lg={11} md={11} sm={12} xs={24}>
-            <SvgIcon src={icon} width="100%" height="100%" />
           </Col>
         </Row>
       </Fade>

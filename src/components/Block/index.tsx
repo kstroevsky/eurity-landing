@@ -2,8 +2,8 @@ import { withTranslation } from "react-i18next";
 import { Container, TextWrapper, Content } from "./styles";
 
 interface Props {
-  title: string;
-  content: string;
+  title?: string;
+  content?: string;
   t: any;
 }
 

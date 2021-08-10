@@ -4,25 +4,6 @@ export const LeftContentSection = styled("section")`
   position: relative;
   padding: 4rem 0 1rem;
   
-  #mission h6 {font-size:2em;}
-
-  #mission>div {
-    display: flex; 
-    min-height: 26em;
-    align-items: center; 
-    borderColor: rgba(122,199,240,0.4);
-    background: linear-gradient(200deg, #b2d3c2, #FDF8D0);
-    box-shadow: 0px 4px 8px rgba(41, 49, 71, 0.1);
-    border-radius: 5%;
-    transition: 0.5s;
-  }
-
-  #mission>div:hover {
-    transition: 0.5s; 
-    box-shadow: 0px 16px 32px rgba(41, 49, 71, 0.1);
-  }
-
-  .textCard {padding: 10px 0;}
   @media only screen and (max-width: 1024px) {
     padding: 4rem 0 4rem;
   }
@@ -46,9 +27,17 @@ export const ContentWrapper = styled("div")`
 `;
 
 export const ServiceWrapper = styled("div")`
-  display: flex;
-  justify-content: center;
-  max-width: 100%;
+  position: relative;
+  display:block;
+  min-width: 100%;
+  
+  transition: 0.5s;
+  padding-left:20%;
+
+  :hover {
+    transition: 0.5s;
+    padding-left:15%;
+  }
 `;
 
 export const MinTitle = styled("h6")`
@@ -57,10 +46,9 @@ export const MinTitle = styled("h6")`
   text-transform: uppercase;
   color: #000;
   font-family: "Motiva Sans Light", sans-serif;
-  text-align: center;
 `;
 
 export const MinPara = styled("p")`
   font-size: 17px;
-  text-align: center;
+  border-bottom: 1px solid black;
 `;

@@ -1,15 +1,25 @@
 {
-  "title": "Light, fast & responsive",
+  "title": "Details",
   "text": "This template is ready to use, so you don't need to change anything at a component level, unless you want to customize the default styling.",
   "section": [
     {
-      "title": "Why Antd?",
-      "content": "Ant Design is a React UI library that has a lot of easy-to-use components for building elegant UI.",
+      "title": "1 mEUR = 1 EUR",
+      "content": "Redeem 1 mEUR for 1 EUR worth of MATIC. Anytime.",
       "icon": "notes.svg"
     },
     {
-      "title": "Why styled-components?",
-      "content": "Styled Components gives you total control over your components.",
+      "title": "0% interest loans",
+      "content": "Maintain exposure to your crypto while borrowing stablecoin liquidity for your goals.",
+      "icon": "notes.svg"
+    },
+    {
+      "title": "Earn on mEUR",
+      "content": "Earn by providing liquidity for mEUR on major DeFi exchanges such as Curve or Sushiswap.",
+      "icon": "notes.svg"
+    },
+    {
+      "title": "Stability that needs no governance",
+      "content": "The highly efficient liquidation mechanism enables you to reliably store and trade euro on blockchain.",
       "icon": "notes.svg"
     }
   ]
