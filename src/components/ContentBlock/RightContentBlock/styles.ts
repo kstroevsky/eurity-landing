@@ -9,7 +9,7 @@ export const RightBlockContainer = styled("section")`
   }
 
   @media only screen and (max-width: 768px) {
-    padding: 2rem 0 3rem;
+    padding: 3rem 0 3rem;
   }
 `;
 
