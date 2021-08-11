@@ -1,6 +1,5 @@
 import { useRef, useEffect } from 'react';
 import Wave from './Wave';
-import { resizeCanvasToDisplaySize } from './resizeCanvas';
 
 const useCanvas = (draw:any, options={}) => {
   const canvasRef = useRef<any>(null);
