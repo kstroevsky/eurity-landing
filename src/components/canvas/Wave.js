@@ -9,7 +9,7 @@ export default class Wave {
 
     resize() {
         this.width = this.canvas.width;
-        this.height = this.canvas.height;
+        this.height = this.canvas.height*1.2;
         this.amplitude = this.canvas.height * this.options.amplitude; // 振幅
     }
 
