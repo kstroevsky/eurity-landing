@@ -3,7 +3,6 @@ import { withTranslation } from "react-i18next";
 import { SvgIcon } from "../../../common/SvgIcon";
 import { Button } from "../../../common/Button";
 import { ContentBlockProps } from "../types";
-import { Fade } from "react-awesome-reveal";
 import WaveComponent from '../../canvas/WaveBackground';
 import {
   RightBlockContainer,
@@ -28,7 +27,6 @@ const RightBlock = ({
   };
   return (
     <RightBlockContainer>
-      <Fade direction="right">
         <Row justify="space-between" align="middle" id={id}>
           <Col lg={24} md={24} sm={24} xs={24}>
             {id == 'intro' ? <WaveComponent width={window.innerWidth*1.5} height={window.innerHeight}/> : ''}
@@ -53,7 +51,6 @@ const RightBlock = ({
             </ContentWrapper>
           </Col>
         </Row>
-      </Fade>
     </RightBlockContainer>
   );
 };

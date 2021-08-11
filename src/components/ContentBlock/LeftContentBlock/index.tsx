@@ -2,7 +2,6 @@ import { Row, Col } from "antd";
 import { withTranslation } from "react-i18next";
 import { SvgIcon } from "../../../common/SvgIcon";
 import { ContentBlockProps } from "../types";
-import { Fade } from "react-awesome-reveal";
 import {
   LeftContentSection,
   Content,
@@ -26,7 +25,6 @@ const LeftContentBlock = ({
 }: ContentBlockProps) => {
   return (
     <LeftContentSection>
-      <Fade direction="left">
         {title ? <h6 style={{textAlign:'center'}}>{title}</h6> : <></> }
         <Row justify="space-between" align="middle" id={id}>
           <Col lg={11} md={11} sm={12} xs={24}>
@@ -80,7 +78,6 @@ const LeftContentBlock = ({
             </ContentWrapper>
           </Col>
         </Row>
-      </Fade>
     </LeftContentSection>
   );
 };
