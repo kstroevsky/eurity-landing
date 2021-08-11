@@ -35,7 +35,7 @@ const RightBlock = ({
       {resizeListener}
         <Row justify="space-between" align="middle" id={id}>
           <Col lg={24} md={24} sm={24} xs={24}>
-            {id == 'intro' ? <WaveComponent width={sizes.width ? sizes.width*1.5 : window.innerWidth} height={window.innerHeight}/> : ''}
+            {id == 'intro' ? <WaveComponent width={sizes.width ? sizes.width*1.5 : window.innerWidth} height={sizes.height ? sizes.height : window.innerHeight}/> : ''}
             <ContentWrapper>
               <h6>{t(title)}</h6>
               <Content>{t(content)}</Content>
