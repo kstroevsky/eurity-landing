@@ -1,6 +1,8 @@
+import React, {useEffect} from "react";
 import { Row, Col } from "antd";
 import { withTranslation } from "react-i18next";
 import { SvgIcon } from "../../../common/SvgIcon";
+import useResizeAware from 'react-resize-aware';
 import { Button } from "../../../common/Button";
 import { ContentBlockProps } from "../types";
 import WaveComponent from '../../canvas/WaveBackground';
@@ -25,11 +27,15 @@ const RightBlock = ({
       behavior: "smooth",
     });
   };
+
+  const [resizeListener, sizes] = useResizeAware();
+
   return (
     <RightBlockContainer>
+      {resizeListener}
         <Row justify="space-between" align="middle" id={id}>
           <Col lg={24} md={24} sm={24} xs={24}>
-            {id == 'intro' ? <WaveComponent width={window.innerWidth*1.5} height={window.innerHeight}/> : ''}
+            {id == 'intro' ? <WaveComponent width={sizes.width ? sizes.width*1.5 : window.innerWidth} height={window.innerHeight}/> : ''}
             <ContentWrapper>
               <h6>{t(title)}</h6>
               <Content>{t(content)}</Content>
