@@ -11,8 +11,6 @@ const useCanvas = (draw:any, options={}) => {
     const canvas = canvasRef.current;
     const context = canvas.getContext('2d');
 
-    resizeCanvasToDisplaySize(canvas);
-
     const run = (callback:any) => {
         window.requestAnimationFrame(()=>{
             run(callback);

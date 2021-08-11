@@ -1,18 +1,14 @@
-export const resizeCanvasToDisplaySize = (canvas:any) => {
-    
-    const { width, height, amplitude=0 } = canvas.getBoundingClientRect();
+export const resizeCanvasToDisplaySize = (context:any, canvas:any) => {
+  const { width, height } = canvas.getBoundingClientRect()
+  
+  if (canvas.width !== width || canvas.height !== height) {
+    const { devicePixelRatio:ratio=1 } = window
+    const context = canvas.getContext('2d')
+    canvas.width = width*ratio
+    canvas.height = height*ratio
+    context.scale(ratio, ratio)
+    return true
+  }
 
-    if (canvas.width !== width || canvas.height !== height) {
-      canvas.width = width;
-      canvas.height = height;
-      
-      if (amplitude !== 0) {
-        canvas.amplitude = canvas.height * amplitude;
-      }
-
-      return true; // here you can return some usefull information like delta width and delta height instead of just true
-      // this information can be used in the next redraw...
-    }
-
-    return false;
+  return false
 }
