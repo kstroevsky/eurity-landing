@@ -54,8 +54,13 @@ const useCanvas = (draw:any, options={}) => {
         waves.forEach((wave)=>{
             wave.draw(context);
         })
+        const grd = context.createLinearGradient(0, 0, 2000, 0);
+        grd.addColorStop(1,"white");
+        grd.addColorStop(0.6, 'white')
+        grd.addColorStop(0.4,"rgba(255,255,255,0)");
+        context.fillStyle = grd;
+        context.fillRect(canvas.width-900,0,canvas.width-800,canvas.height);
     }) 
-
     
   }, [draw]);
 
