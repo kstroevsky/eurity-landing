@@ -17,7 +17,7 @@ const FAQ = ({ title, content, id, t, section, info }: ContentBlockProps) => {
   return (
     <LeftContentSection>
         {title ? <h6 style={{textAlign:'center'}}>{title}</h6> : <></> }
-      <Row justify="space-between" align="middle" id={id}>
+      <Row justify="space-between" align="top" id={id}>
         <Col lg={6} md={11} sm={24} xs={24}>
             <Block title={info} content={content} />
         </Col>

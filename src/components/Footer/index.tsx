@@ -91,7 +91,7 @@ const Footer = ({ t }: any) => {
           >
             <NavLink to="/">
               <LogoContainer>
-                <Title>{t("Eurity")}</Title>
+                <SvgIcon width='100%' height='100%' src='logo.svg'/>
               </LogoContainer>
             </NavLink>
             <FooterContainer>
@@ -108,7 +108,7 @@ const Footer = ({ t }: any) => {
                 src="medium.svg"
               />
               <SocialLink
-                href="https://medium.com/@eurity"
+                href="https://t.me/eurity"
                 src="telegram.svg"
               />
             </FooterContainer>
