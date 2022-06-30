@@ -21,34 +21,69 @@ export const Content = styled("p")`
 export const ContentWrapper = styled("div")`
   position: relative;
   max-width: 540px;
-  padding:20px;
-
-  
+  padding: 20px;
 `;
 
 export const ServiceWrapper = styled("div")`
   position: relative;
-  display:block;
+  display: block;
   min-width: 100%;
   
   transition: 0.5s;
-  padding-left:20%;
+  padding-left: 15%;
+
+  cursor: default;
 
   :hover {
     transition: 0.5s;
-    padding-left:15%;
   }
 `;
 
 export const MinTitle = styled("h6")`
-  font-size: 22px;
+  font-size: 26px;
   padding: 0.5rem 0;
-  text-transform: uppercase;
+  text-transform: none;
   color: #000;
   font-family: "Motiva Sans Light", sans-serif;
+  font-weight: 999;
+
+  .currency-green {
+    color: #448361;
+  }
+
+  .back-green {
+    background-color: #EDF3EC;
+  }
 `;
 
-export const MinPara = styled("p")`
-  font-size: 17px;
-  border-bottom: 1px solid black;
+export const MinPara = styled("div")`
+  transition: 0.8s;
+  border-bottom: 1px solid white;
+
+  :hover {
+    border-bottom-color: black;
+    transition: 0.8s;
+  }
+
+  p {
+    font-size: 18px;
+  }
+
+  ul {
+    border-top: 1px solid #DFDFDE;
+    font-size: 18px;
+    padding-top: 7px;
+  }
+
+  li {
+    padding-top: 7px;
+  }
+
+  .currency-green {
+    color: #448361;
+  }
+
+  .def-bold {
+    font-weight: 999;
+  }
 `;

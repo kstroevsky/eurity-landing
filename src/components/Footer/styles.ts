@@ -93,7 +93,7 @@ export const FooterContainer = styled("div")`
   display: flex;
   justify-content: space-between;
   text-align: center;
-  align-items: center;
+  align-items: stretch;
   transition: all 0.1s ease-in-out;
 
   a {
