@@ -3,13 +3,29 @@ import styled from "styled-components";
 export const LeftContentSection = styled("section")`
   position: relative;
   padding: 4rem 0 1rem;
+
+  #sub-title {
+    position: sticky;
+    top: 0;
+  }
   
   @media only screen and (max-width: 1024px) {
     padding: 4rem 0 4rem;
   }
+
+  @media only screen and (max-width: 767px) {
+    #sub-title {
+      position: relative;
+    }
+  }
+
   @media only screen and (max-width: 575px) {
     #mission>div {
       margin-bottom:4em;
+    }
+
+    #sub-title {
+      position: relative;
     }
   }
 `;
@@ -41,11 +57,12 @@ export const ServiceWrapper = styled("div")`
 
 export const MinTitle = styled("h6")`
   font-size: 26px;
-  padding: 0.5rem 0;
+  padding: 0.8rem 0 0 0;
+  // padding-top: 0.7rem;
   text-transform: none;
   color: #000;
-  font-family: "Motiva Sans Light", sans-serif;
-  font-weight: 999;
+  font-family: "Motiva Sans Bold", sans-serif;
+  // font-weight: 999;
 
   .currency-green {
     color: #448361;

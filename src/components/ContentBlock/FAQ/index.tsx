@@ -1,3 +1,4 @@
+import React, { useRef, useEffect } from 'react'
 import { Row, Col } from "antd";
 import { withTranslation } from "react-i18next";
 import { Button } from "../../../common/Button";
@@ -136,15 +137,21 @@ const contentToJSX = (content: string[] | string, rules?: Record<string, string>
 }
 
 const FAQ = ({ title, content, id, t, section, info }: ContentBlockProps) => {
+  // const subTitleRef = useRef<HTMLDivElement>(null)
+
+  
+  // useEffect(() => {
+  //   console.log(subTitleRef.current?.getBoundingClientRect().top, subTitleRef.current?.offsetTop)
+  // }, [subTitleRef.current])
 
   return (
     <LeftContentSection>
         {title ? <h6 style={{textAlign:'center'}}>{title}</h6> : <></> }
       <Row justify="space-between" align="top" id={id}>
-        <Col lg={6} md={11} sm={24} xs={24}>
-            <Block title={info} content={content} />
+        <Col lg={8} md={11} sm={24} xs={24} id="sub-title">
+            <Block title={info} content={content}/>
         </Col>
-        <Col lg={18} md={12} sm={24} xs={24}>
+        <Col lg={16} md={12} sm={24} xs={24}>
           <Row justify="center" style={{alignContent: "stretch"}}>
             {typeof section === "object" &&
               section.map((item: any, id: number) => {
