@@ -5,7 +5,6 @@ let animationWorker = null;
 let canvas, canvasCtx;
 
 self.onmessage = function(e) {
-  console.log(e.data.msg)
   if (e.data.msg === 'init') {
     canvas = e.data.canvas;
     canvasCtx = canvas.getContext('2d');

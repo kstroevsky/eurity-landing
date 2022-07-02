@@ -10,7 +10,6 @@ export const LeftContentSection = styled("section")`
 
   #mission>div {
     display: flex; 
-    min-height: 26em;
     align-items: baseline; 
     borderColor: rgba(122,199,240,0.4);
     background: linear-gradient(200deg, #b2d3c2, #FDF8D0);

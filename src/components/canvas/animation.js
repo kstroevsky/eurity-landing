@@ -5,6 +5,7 @@ export class Animation {
         this.context = context;
         this.width = context.canvas.width;
         this.height = context.canvas.height;
+        console.log(this.width)
 
         this.callback = (context) => {
             context.clearRect(0, 0, this.width, this.height);
@@ -13,17 +14,18 @@ export class Animation {
               wave.draw(context);
             });
       
-            const grd = context.createLinearGradient(0, 0, 2000, 0);
+            // TODO: make relative
+            const grd = context.createLinearGradient(500, 0, this.width, 0);
       
             grd.addColorStop(1, "white");
             grd.addColorStop(0.6, "white");
-            grd.addColorStop(0.4, "rgba(255,255,255,0)");
+            grd.addColorStop(0.3, "rgba(255,255,255,0)");
             context.fillStyle = grd;
             
             context.fillRect(
-              this.width,
+              500,
               0,
-              this.width - 800,
+              this.width + 400,
               this.height
             );
         }

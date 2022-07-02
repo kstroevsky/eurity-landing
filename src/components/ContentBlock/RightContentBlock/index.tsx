@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import { Row, Col } from "antd";
 import { withTranslation } from "react-i18next";
 import { SvgIcon } from "../../../common/SvgIcon";
@@ -21,6 +21,7 @@ const RightBlock = ({
   t,
   id,
 }: ContentBlockProps) => {
+  const [canvasWidth, setCanvasWidth] = useState<number>(window.innerWidth * 1.2)
   const scrollTo = (id: string) => {
     const element = document.getElementById(id) as HTMLDivElement;
     element.scrollIntoView({
@@ -30,6 +31,13 @@ const RightBlock = ({
 
   const [resizeListener, sizes] = useResizeAware();
 
+  // useEffect(() => {
+  //   console.log(sizes.width)
+  //   setCanvasWidth(prev => sizes.width || prev)
+  // }, [sizes.width])
+
+  console.log(window.devicePixelRatio)
+
   return (
     <RightBlockContainer>
       {resizeListener}
@@ -37,8 +45,8 @@ const RightBlock = ({
           <Col lg={24} md={24} sm={24} xs={24}>
             {id === 'intro' && (
               <WaveComponent
-                width={sizes.width ? sizes.width*1.5 : window.innerWidth} 
-                height={sizes.height ? sizes.height : window.innerHeight}
+                width={window.innerWidth * 1.2} 
+                height={window.innerHeight}
               />
             )}
             <ContentWrapper>
