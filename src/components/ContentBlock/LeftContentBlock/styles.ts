@@ -5,11 +5,13 @@ export const LeftContentSection = styled("section")`
   padding: 4rem 0 1rem;
   
   #mission h6 {font-size:2em;}
+  
+  #mission {align-items: stretch}
 
   #mission>div {
     display: flex; 
     min-height: 26em;
-    align-items: center; 
+    align-items: baseline; 
     borderColor: rgba(122,199,240,0.4);
     background: linear-gradient(200deg, #b2d3c2, #FDF8D0);
     box-shadow: 0px 4px 8px rgba(41, 49, 71, 0.1);
@@ -34,7 +36,7 @@ export const LeftContentSection = styled("section")`
 `;
 
 export const Content = styled("p")`
-  margin: 1.5rem 0 2rem 0;
+  margin: 1.5rem 0 0 0;
 `;
 
 export const ContentWrapper = styled("div")`

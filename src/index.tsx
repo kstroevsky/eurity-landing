@@ -1,7 +1,7 @@
+import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from "react-router-dom";
-import ReactDOM from "react-dom";
 import { I18nextProvider } from "react-i18next";
-import "antd/dist/antd.css";
+import 'antd/dist/antd.min.css';
 
 import Router from "./router";
 import i18n from "./translation";
@@ -14,4 +14,8 @@ const App = () => (
   </BrowserRouter>
 );
 
-ReactDOM.render(<App />, document.getElementById("root"));
+const htmlRoot = document.getElementById('root')
+if (htmlRoot === null) throw new Error('Root container missing in index.html')
+
+const root = createRoot(htmlRoot);
+root.render(<App />)

@@ -8,7 +8,7 @@ interface Props {
   t: any;
 }
 
-const Block: React.FC<Props> = ({ title, content, t }) => {  
+const Block: React.FC<React.PropsWithChildren<React.PropsWithChildren<Props>>> = ({ title, content, t }) => {  
   return (
     <Container>
       <h6>{t(title)}</h6>

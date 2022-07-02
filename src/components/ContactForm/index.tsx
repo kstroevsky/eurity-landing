@@ -15,6 +15,9 @@ const Contact = ({ title, content, id, t }: ContactProps) => {
     validate
   ) as any;
 
+  console.log(Zoom, typeof Zoom);
+  
+
   const ValidationType = ({ type }: ValidationTypeProps) => {
     const ErrorMessage = errors[type];
     return (

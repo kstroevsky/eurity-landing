@@ -1,7 +1,11 @@
-const routes = [
+export interface RouteConfig {
+  path: string;
+  component: string;
+}
+
+const routes: RouteConfig[] = [
   {
-    path: ["/", "/home"],
-    exact: true,
+    path: "/home",
     component: "Home",
   },
 ];

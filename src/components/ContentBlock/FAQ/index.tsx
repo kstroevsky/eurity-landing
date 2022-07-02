@@ -137,13 +137,6 @@ const contentToJSX = (content: string[] | string, rules?: Record<string, string>
 }
 
 const FAQ = ({ title, content, id, t, section, info }: ContentBlockProps) => {
-  // const subTitleRef = useRef<HTMLDivElement>(null)
-
-  
-  // useEffect(() => {
-  //   console.log(subTitleRef.current?.getBoundingClientRect().top, subTitleRef.current?.offsetTop)
-  // }, [subTitleRef.current])
-
   return (
     <LeftContentSection>
         {title ? <h6 style={{textAlign:'center'}}>{title}</h6> : <></> }

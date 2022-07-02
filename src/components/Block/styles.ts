@@ -6,7 +6,6 @@ export const Content = styled("p")`
 
 export const Container = styled("div")`
   position: relative;
-  // max-width: 700px;
 `;
 
 export const TextWrapper = styled("div")`

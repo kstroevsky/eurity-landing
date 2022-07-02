@@ -1,12 +1,23 @@
-import React, { useEffect }  from 'react';
-import useCanvas from './useCanvas'; 
+import { useEffect, useRef }  from 'react';
 
-const WaveComponent = (props:any) => {
-    
-    const { draw, ...rest} = props;
-    const canvasRef = useCanvas(draw);
+const WaveComponent = ({...rest}) => {
+    const canvasRef = useRef<any>(null);
 
-    return <canvas style={{position:'absolute', zIndex:-1, opacity: 0.3}} ref={canvasRef} {...rest}/>
+    useEffect(() => {
+        const canvas = canvasRef.current;
+        const offscreen = canvasRef.current.transferControlToOffscreen();
+        // const worker = createWorker(canvas, new URL('./worker.js', import.meta.url));
+
+        // worker.post( {
+        //     drawingSurface: offscreen,
+        //     width: canvas.clientWidth,
+        //     height: canvas.clientHeight,
+        //     pixelRatio: window.devicePixelRatio,
+        // }, [ offscreen ] );
+
+    }, []);
+
+    return <canvas ref={canvasRef} style={{position:'absolute', zIndex:-1, opacity: 0.3}} {...rest}/>
 }
 
 export default WaveComponent; 
