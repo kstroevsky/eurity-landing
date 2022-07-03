@@ -1,4 +1,4 @@
-import { RefObject, useEffect, useRef }  from 'react';
+import React, { RefObject, useEffect, useRef }  from 'react';
 
 // import waveWorker from './wave.worker';
 
@@ -12,7 +12,11 @@ const initCanvas = (worker: RefObject<Worker | null>, canvas: RefObject<HTMLCanv
     );
 }
 
-const WaveComponent = ({...rest}) => {
+interface WaveComponentProps {
+    height: number;
+}
+
+const WaveComponent: React.FC<WaveComponentProps> = ({ height }) => {
     // const canvasContainerRef = useRef<HTMLDivElement>(null)
     const workerRef = useRef<Worker | null>(null);
     const canvasWorkerRef = useRef<HTMLCanvasElement>(null);
@@ -33,13 +37,6 @@ const WaveComponent = ({...rest}) => {
             }, 
             [offscreen]
         );
-
-        workerRef.current.onmessage = function(e) {
-            if (e.data.msg === 'scale') {
-                canvasWorkerRef.current!.style.width = window.innerWidth * 0.01 + 'px';
-                canvasWorkerRef.current!.style.height = window.innerHeight * 0.01 + 'px';
-            }
-        }
 
         // initCanvas(workerRef, canvasWorkerRef)
     }, []);
@@ -80,11 +77,10 @@ const WaveComponent = ({...rest}) => {
             style={{
                 position:'absolute', 
                 zIndex:-1, 
-                opacity: 0.5,
-                width: window.innerWidth * 1.2, 
-                height: window.innerHeight
+                opacity: 0.8,
+                width: 1200 * 1.35, 
+                height: height
             }} 
-            {...rest}
         />
     )
 }

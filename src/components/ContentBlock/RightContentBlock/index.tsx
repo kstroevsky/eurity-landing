@@ -43,8 +43,7 @@ const RightBlock = ({
           <Col lg={24} md={24} sm={24} xs={24}>
             {id === 'intro' && (
               <WaveComponent
-                // width={sizes.width || window.innerWidth * 1.2} 
-                // height={sizes.height || window.innerHeight}
+                height={sizes.height !* 1.3 || window.innerHeight}
               />
             )}
             <ContentWrapper>

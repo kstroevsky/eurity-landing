@@ -14,11 +14,7 @@ self.onmessage = function(e) {
     canvasCtx = canvas.getContext('2d');
     canvasCtx.scale(e.data.dpr, e.data.dpr);
 
-    self.postMessage({
-      masg: 'scale'
-    })
-
-    animationWorker = new Animation(canvasCtx, e.data.sizes);
+    animationWorker = new Animation(canvasCtx, e.data.sizes, e.data.dpr);
     animationWorker.init();
     animationWorker.run();
   }
