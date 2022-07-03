@@ -36,8 +36,6 @@ const RightBlock = ({
   //   setCanvasWidth(prev => sizes.width || prev)
   // }, [sizes.width])
 
-  console.log(window.devicePixelRatio)
-
   return (
     <RightBlockContainer>
       {resizeListener}
@@ -45,8 +43,8 @@ const RightBlock = ({
           <Col lg={24} md={24} sm={24} xs={24}>
             {id === 'intro' && (
               <WaveComponent
-                width={window.innerWidth * 1.2} 
-                height={window.innerHeight}
+                // width={sizes.width || window.innerWidth * 1.2} 
+                // height={sizes.height || window.innerHeight}
               />
             )}
             <ContentWrapper>

@@ -21,26 +21,40 @@ const WaveComponent = ({...rest}) => {
         console.log('initial start')
         workerRef.current = new Worker(new URL('./wave.worker.js', import.meta.url));
         const offscreen = canvasWorkerRef.current!.transferControlToOffscreen();
+        const rect = canvasWorkerRef.current!.getBoundingClientRect()
+        console.log(rect);
 
         workerRef.current.postMessage(
-            { msg: 'init', canvas: offscreen }, 
+            { 
+                msg: 'init', 
+                canvas: offscreen, 
+                dpr: window.devicePixelRatio || 1,
+                sizes: rect || {width: window.innerWidth, height: window.innerHeight}
+            }, 
             [offscreen]
         );
+
+        workerRef.current.onmessage = function(e) {
+            if (e.data.msg === 'scale') {
+                canvasWorkerRef.current!.style.width = window.innerWidth * 0.01 + 'px';
+                canvasWorkerRef.current!.style.height = window.innerHeight * 0.01 + 'px';
+            }
+        }
 
         // initCanvas(workerRef, canvasWorkerRef)
     }, []);
 
-    useEffect(() => {
-        if (
-            workerRef.current && 
-            canvasWorkerRef.current && 
-            Math.floor(rest.width) !== Math.floor(canvasWorkerRef.current.width)
-        ) {
-            console.log('resize')
-            workerRef.current.terminate()
-            initCanvas(workerRef, canvasWorkerRef);
-        }
-    }, [rest.width])
+    // useEffect(() => {
+    //     if (
+    //         workerRef.current && 
+    //         canvasWorkerRef.current && 
+    //         Math.floor(rest.width) !== Math.floor(canvasWorkerRef.current.width)
+    //     ) {
+    //         console.log('resize')
+    //         workerRef.current.terminate()
+    //         initCanvas(workerRef, canvasWorkerRef);
+    //     }
+    // }, [rest.width])
 
     // useEffect(() => {
     //     const canvas = canvasRef.current;
@@ -59,7 +73,20 @@ const WaveComponent = ({...rest}) => {
 
     // }, []);
 
-    return<canvas ref={canvasWorkerRef} style={{position:'absolute', zIndex:-1, opacity: 0.4}} {...rest}/>
+    return (
+        // <div ></div>
+        <canvas
+            ref={canvasWorkerRef}
+            style={{
+                position:'absolute', 
+                zIndex:-1, 
+                opacity: 0.5,
+                width: window.innerWidth * 1.2, 
+                height: window.innerHeight
+            }} 
+            {...rest}
+        />
+    )
 }
 
 export default WaveComponent; 

@@ -1,7 +1,8 @@
 export default class Wave {
-    constructor(canvas, options) {
+    constructor(canvas, options, sizes) {
         this.canvas = canvas;
         this.options = options;
+        this.sizes = sizes;
         this.xMove = this.options.offset;
         this.xSpeed = this.options.xSpeed;
         this.resize()
@@ -16,16 +17,16 @@ export default class Wave {
     draw(ctx) {
         this.xMove += this.xSpeed;
         ctx.beginPath();
-        ctx.moveTo(0, this.canvas.height * 0.1);
-        var grad = ctx.createLinearGradient(0, 0, this.canvas.width, 0);
+        ctx.moveTo(0, this.sizes.height * 0.1);
+        var grad = ctx.createLinearGradient(0, 0, this.sizes.width, 0);
         grad.addColorStop(0, this.options.start);
         grad.addColorStop(1, this.options.stop);
         ctx.strokeStyle = grad; 
         ctx.lineWidth = this.options.lineWidth;
         
-        for (let x = 0; x < this.canvas.width - this.canvas.width * 0.05; x++) {
-            const scale = (Math.sin(x / this.canvas.width * Math.PI * 2 - Math.PI * 0.5) + 1) * 0.5;  
-            const y = Math.sin(x * 0.004 + this.xMove) * this.amplitude * scale + this.canvas.height / 2.6;
+        for (let x = 0; x < this.sizes.width - this.sizes.width * 0.05; x++) {
+            const scale = (Math.sin(x / this.sizes.width * Math.PI * 2 - Math.PI * 0.5) + 1) * 0.5;  
+            const y = Math.sin(x * 0.004 + this.xMove) * this.amplitude * scale + this.sizes.height / 2.6;
             ctx.lineTo(x, y);
         } 
         ctx.stroke();

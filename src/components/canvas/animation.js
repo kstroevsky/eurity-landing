@@ -1,10 +1,11 @@
 import Wave from "./Wave";
 
 export class Animation {
-    constructor(context) {
+    constructor(context, sizes) {
         this.context = context;
-        this.width = context.canvas.width;
-        this.height = context.canvas.height;
+        this.sizes = sizes;
+        this.width = sizes.width;
+        this.height = sizes.height;
         console.log(this.width)
 
         this.callback = (context) => {
@@ -32,16 +33,9 @@ export class Animation {
 
         this.gradients = [
             ["white", "black"],
-            ["white", "black"],
-            ["white", "black"],
-            ["white", "black"],
-            ["white", "black"],
-            ["white", "black"]
         ];
         
         this.waves = [];
-
-        this.init()
 
         this.boundAnimate = this.run.bind(this);
     }
@@ -52,22 +46,24 @@ export class Animation {
     };
   
     init() {
-        this.waves = [];
+        // console.log()
         for (let i = 0; i < 25; i++) {
-            const [start, stop] = this.gradients[
-                Math.floor(Math.random() * this.gradients.length)
-            ];
+            const [start, stop] = this.gradients[0];
 
             this.waves.push(
                 new Wave(this.context.canvas, {
                     start: start,
                     stop: stop,
                     lineWidth: 1,
-                    xSpeed: 0.005,
-                    amplitude: 0.3,
+                    xSpeed: 0.013,
+                    amplitude: 0.16,
                     offset: i * 0.1
-                })
+                }, this.sizes)
             );
         }
+
+        console.log(this.waves[0])
     };
+
+    clear() {this.waves = []}
 }
