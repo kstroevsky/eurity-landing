@@ -1,4 +1,5 @@
 import React, { RefObject, useEffect, useRef }  from 'react';
+import { AnimationWaves } from './animation';
 
 // import waveWorker from './wave.worker';
 
@@ -12,32 +13,50 @@ const initCanvas = (worker: RefObject<Worker | null>, canvas: RefObject<HTMLCanv
     );
 }
 
+const getVariables = (): Array<any> => {
+    let animation = null;
+    let canvas, canvasCtx;
+
+    return [animation, canvas, canvasCtx]
+};
+
 interface WaveComponentProps {
     height: number;
 }
 
 const WaveComponent: React.FC<WaveComponentProps> = ({ height }) => {
-    // const canvasContainerRef = useRef<HTMLDivElement>(null)
     const workerRef = useRef<Worker | null>(null);
     const canvasWorkerRef = useRef<HTMLCanvasElement>(null);
     const dpr = window.devicePixelRatio || 1;
 
     useEffect(() => {
-        console.log('initial start')
         workerRef.current = new Worker(new URL('./wave.worker.js', import.meta.url));
-        const offscreen = canvasWorkerRef.current!.transferControlToOffscreen();
         const rect = canvasWorkerRef.current!.getBoundingClientRect()
-        console.log(rect);
+        console.log(window.orientation);
 
-        workerRef.current.postMessage(
-            { 
-                msg: 'init', 
-                canvas: offscreen, 
-                dpr,
-                sizes: rect || {width: window.innerWidth, height: window.innerHeight}
-            }, 
-            [offscreen]
-        );
+        try {
+            const offscreen = canvasWorkerRef.current!.transferControlToOffscreen();
+
+            workerRef.current.postMessage(
+                { 
+                    msg: 'init', 
+                    canvas: offscreen, 
+                    dpr,
+                    sizes: rect || {width: window.innerWidth, height: window.innerHeight}
+                }, 
+                [offscreen]
+            );
+        } catch {
+            canvasWorkerRef.current!.width = Math.round(rect.width * dpr);
+            canvasWorkerRef.current!.height = Math.round(rect.height * dpr);
+
+            const canvasCtx = canvasWorkerRef.current!.getContext('2d', { alpha: false });
+            canvasCtx!.scale(dpr, dpr);
+
+            const animation = new AnimationWaves(canvasCtx, rect, dpr);
+            animation.init();
+            animation.run();
+        }
 
         // initCanvas(workerRef, canvasWorkerRef)
     }, []);

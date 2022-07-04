@@ -1,6 +1,6 @@
 import {default as Wave} from "./Waves";
 
-export class Animation {
+export class AnimationWaves {
     constructor(context, sizes, dpr) {
         this.context = context;
         this.sizes = sizes;

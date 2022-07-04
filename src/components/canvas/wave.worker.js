@@ -1,5 +1,5 @@
 /* eslint no-restricted-globals: 0 */
-import { Animation } from './animation';
+import { AnimationWaves } from './animation';
 
 let animationWorker = null;
 let canvas, canvasCtx;
@@ -14,7 +14,7 @@ self.onmessage = function(e) {
     canvasCtx = canvas.getContext('2d', { alpha: false });
     canvasCtx.scale(e.data.dpr, e.data.dpr);
 
-    animationWorker = new Animation(canvasCtx, e.data.sizes, e.data.dpr);
+    animationWorker = new AnimationWaves(canvasCtx, e.data.sizes, e.data.dpr);
     animationWorker.init();
     animationWorker.run();
   }
