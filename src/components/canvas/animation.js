@@ -1,4 +1,4 @@
-import Wave from "./Wave";
+import {default as Wave} from "./Waves";
 
 export class Animation {
     constructor(context, sizes, dpr) {
@@ -7,29 +7,14 @@ export class Animation {
         this.width = sizes.width;
         this.height = sizes.height;
         this.dpr = dpr;
-        console.log(this.dpr)
 
         this.callback = (context) => {
-            context.clearRect(0, 0, this.width, this.height);
+            context.fillStyle = 'white';
+            context.fillRect(0, 0, this.width, this.height);
       
             this.waves.forEach((wave) => {
               wave.draw(context);
             });
-      
-            // TODO: make relative
-            const grd = context.createLinearGradient(500, 0, this.width, 0);
-      
-            grd.addColorStop(1, "white");
-            grd.addColorStop(0.6, "white");
-            grd.addColorStop(0.2, "rgba(255,255,255,0)");
-            context.fillStyle = grd;
-            
-            context.fillRect(
-              500,
-              0,
-              this.width + 400,
-              this.height
-            );
         }
 
         this.gradients = [
@@ -47,7 +32,6 @@ export class Animation {
     };
   
     init() {
-        // console.log()
         for (let i = 0; i < 25; i++) {
             const [start, stop] = this.gradients[0];
 
@@ -56,7 +40,7 @@ export class Animation {
                     start: start,
                     stop: stop,
                     lineWidth: 1,
-                    xSpeed: 0.015,
+                    xSpeed: 0.011,
                     amplitude: 0.32/this.dpr,
                     offset: i * 0.1
                 }, this.sizes)

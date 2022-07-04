@@ -20,6 +20,7 @@ const WaveComponent: React.FC<WaveComponentProps> = ({ height }) => {
     // const canvasContainerRef = useRef<HTMLDivElement>(null)
     const workerRef = useRef<Worker | null>(null);
     const canvasWorkerRef = useRef<HTMLCanvasElement>(null);
+    const dpr = window.devicePixelRatio || 1;
 
     useEffect(() => {
         console.log('initial start')
@@ -32,7 +33,7 @@ const WaveComponent: React.FC<WaveComponentProps> = ({ height }) => {
             { 
                 msg: 'init', 
                 canvas: offscreen, 
-                dpr: window.devicePixelRatio || 1,
+                dpr,
                 sizes: rect || {width: window.innerWidth, height: window.innerHeight}
             }, 
             [offscreen]
@@ -77,9 +78,10 @@ const WaveComponent: React.FC<WaveComponentProps> = ({ height }) => {
             style={{
                 position:'absolute', 
                 zIndex:-1, 
-                opacity: 0.8,
+                opacity: 0.6,
                 width: 1200 * 1.35, 
-                height: height
+                height: height,
+                backgroundColor: 'white'
             }} 
         />
     )

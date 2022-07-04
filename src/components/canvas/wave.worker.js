@@ -11,7 +11,7 @@ self.onmessage = function(e) {
     canvas.width = Math.round(e.data.sizes.width * e.data.dpr);
     canvas.height = Math.round(e.data.sizes.height * e.data.dpr);
 
-    canvasCtx = canvas.getContext('2d');
+    canvasCtx = canvas.getContext('2d', { alpha: false });
     canvasCtx.scale(e.data.dpr, e.data.dpr);
 
     animationWorker = new Animation(canvasCtx, e.data.sizes, e.data.dpr);
