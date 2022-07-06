@@ -13,13 +13,6 @@ const initCanvas = (worker: RefObject<Worker | null>, canvas: RefObject<HTMLCanv
     );
 }
 
-const getVariables = (): Array<any> => {
-    let animation = null;
-    let canvas, canvasCtx;
-
-    return [animation, canvas, canvasCtx]
-};
-
 interface WaveComponentProps {
     height: number;
 }
@@ -32,7 +25,8 @@ const WaveComponent: React.FC<WaveComponentProps> = ({ height }) => {
     useEffect(() => {
         workerRef.current = new Worker(new URL('./wave.worker.js', import.meta.url));
         const rect = canvasWorkerRef.current!.getBoundingClientRect()
-        console.log(window.orientation);
+        
+        const kr = rect.width/window.innerWidth * 1.2;
 
         try {
             const offscreen = canvasWorkerRef.current!.transferControlToOffscreen();
@@ -41,38 +35,26 @@ const WaveComponent: React.FC<WaveComponentProps> = ({ height }) => {
                 { 
                     msg: 'init', 
                     canvas: offscreen, 
-                    dpr,
-                    sizes: rect || {width: window.innerWidth, height: window.innerHeight}
+                    dpr: kr,
+                    sizes: {width: window.innerWidth, height: window.innerHeight}
                 }, 
                 [offscreen]
             );
         } catch {
-            canvasWorkerRef.current!.width = Math.round(rect.width * dpr);
-            canvasWorkerRef.current!.height = Math.round(rect.height * dpr);
+            canvasWorkerRef.current!.width = Math.round(window.innerWidth * kr);
+            canvasWorkerRef.current!.height = Math.round(window.innerHeight * kr);
 
             const canvasCtx = canvasWorkerRef.current!.getContext('2d', { alpha: false });
-            canvasCtx!.scale(dpr, dpr);
+            canvasCtx!.scale(kr, kr);
 
-            const animation = new AnimationWaves(canvasCtx, rect, dpr);
+            const animation = new AnimationWaves(canvasCtx, {width: window.innerWidth, height: window.innerHeight}, kr);
             animation.init();
             animation.run();
         }
 
-        // initCanvas(workerRef, canvasWorkerRef)
     }, []);
 
-    // useEffect(() => {
-    //     if (
-    //         workerRef.current && 
-    //         canvasWorkerRef.current && 
-    //         Math.floor(rest.width) !== Math.floor(canvasWorkerRef.current.width)
-    //     ) {
-    //         console.log('resize')
-    //         workerRef.current.terminate()
-    //         initCanvas(workerRef, canvasWorkerRef);
-    //     }
-    // }, [rest.width])
-
+    // TODO: add resize func
     // useEffect(() => {
     //     const canvas = canvasRef.current;
 
@@ -98,9 +80,11 @@ const WaveComponent: React.FC<WaveComponentProps> = ({ height }) => {
                 position:'absolute', 
                 zIndex:-1, 
                 opacity: 0.6,
-                width: 1200 * 1.35, 
+                width: 3240/dpr, 
                 height: height,
-                backgroundColor: 'white'
+                backgroundColor: 'white',
+                left: dpr >= 3 ? -200 : 0, 
+                top: dpr >= 3 ? 120 : 0,
             }} 
         />
     )
