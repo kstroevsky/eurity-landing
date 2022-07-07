@@ -1,7 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 
 export const Styles = createGlobalStyle`
-
+    @viewport
     @font-face {
         font-family: "Motiva Sans Light";
         src: url("/fonts/Motiva-Sans-Light.ttf") format("truetype");

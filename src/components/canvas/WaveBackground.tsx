@@ -73,7 +73,6 @@ const WaveComponent: React.FC<WaveComponentProps> = ({ height }) => {
     // }, []);
 
     return (
-        // <div ></div>
         <canvas
             ref={canvasWorkerRef}
             style={{
