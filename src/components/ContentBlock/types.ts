@@ -12,4 +12,5 @@ export interface ContentBlockProps {
   id: string;
   type?: string;
   info?: string;
+  link?: string;
 }

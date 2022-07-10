@@ -2,9 +2,6 @@ import { lazy } from "react";
 import IntroContent from "../../content/IntroContent.json";
 import mEURERTYBlockContent from "../../content/mEURERTYContent.json";
 import AboutContent from "../../content/AboutContent.json";
-import MissionContent from "../../content/MissionContent.json";
-import ProductContent from "../../content/ProductContent.json";
-import ContactContent from "../../content/ContactContent.json";
 import FAQContent from "../../content/FAQContent.json";
 
 const Container = lazy(() => import("../../common/Container"));
@@ -45,6 +42,7 @@ const Home = () => {
         title={FAQContent.title}
         content={FAQContent.text}
         section={FAQContent.section}
+        link={FAQContent.link}
         id="faq"
       />
     </Container>

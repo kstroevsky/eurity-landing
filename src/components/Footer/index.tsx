@@ -20,6 +20,7 @@ import {
   LanguageSwitch,
   LanguageSwitchContainer,
 } from "./styles";
+import { SyntheticEvent } from "react";
 
 interface SocialLinkProps {
   href: string;
@@ -52,11 +53,19 @@ const Footer = ({ t }: any) => {
           <Row justify="space-between">
             <Col lg={10} md={10} sm={12} xs={12}>
               <Language>{t("Contact")}</Language>
-              <Large to="/">{t("Tell us everything")}</Large>
+              <Large
+                to='#'
+                onClick={(e: SyntheticEvent) => {
+                  window.location.href = 'mailto:l.qqbadze@gmail.com';
+                  e.preventDefault();
+                }}
+              >
+                {t("Tell us everything")}
+              </Large>
               <Para>
                 {t(`Do you have any question? Feel free to reach out.`)}
               </Para>
-              <a href="mailto:l.qqbadze@gmail.com">
+              <a href="https://t.me/eurity" target="_blank" rel="noreferrer" >
                 <Chat>{t(`Let's Chat`)}</Chat>
               </a>
             </Col>
@@ -74,7 +83,11 @@ const Footer = ({ t }: any) => {
               <Large to="/" left="true">
                 {t("Frontend")}
               </Large>
-              <Large left="true" to="/">
+              <Large
+                left="true"
+                to={{ pathname: "https://github.com/tandelov/euro" }} 
+                target="_blank"
+              >
                 {t("Blockchain")}
               </Large>
             </Col>
@@ -96,7 +109,7 @@ const Footer = ({ t }: any) => {
             </NavLink>
             <FooterContainer>
               <SocialLink
-                href="https://github.com/kstroevsky/euro-frontend"
+                href="https://github.com/tandelov/euro"
                 src="github.svg"
               />
               <SocialLink

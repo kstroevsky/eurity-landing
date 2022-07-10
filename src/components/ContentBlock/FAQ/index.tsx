@@ -136,13 +136,13 @@ const contentToJSX = (content: string[] | string, rules?: Record<string, string>
   )
 }
 
-const FAQ = ({ title, content, id, t, section, info }: ContentBlockProps) => {
+const FAQ = ({ title, content, id, t, section, info, link }: ContentBlockProps) => {
   return (
     <LeftContentSection>
         {title ? <h6 style={{textAlign:'center'}}>{title}</h6> : <></> }
       <Row justify="space-between" align="top" id={id}>
         <Col lg={8} md={11} sm={24} xs={24} id="sub-title">
-            <Block title={info} content={content}/>
+            <Block title={info} content={content} link={link}/>
         </Col>
         <Col lg={16} md={12} sm={24} xs={24}>
           <Row justify="center" style={{alignContent: "stretch"}}>

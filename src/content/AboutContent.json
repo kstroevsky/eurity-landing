@@ -5,7 +5,7 @@
     {
       "title": "1 mEUR = 1 EUR",
       "content": "Redeem 1 mEUR for 1 EUR worth of MATIC. Anytime.",
-      "icon": "notes.svg"
+      "icon": "logo1.png"
     },
     {
       "title": "0% interest loans",
@@ -20,7 +20,7 @@
     {
       "title": "Stability that needs no governance",
       "content": "The highly efficient liquidation mechanism enables you to reliably store and trade euro on blockchain.",
-      "icon": "notes.svg"
+      "icon": "logo4.png"
     }
   ]
 }
