@@ -82,8 +82,8 @@ const WaveComponent: React.FC<WaveComponentProps> = ({ height }) => {
                 width: 3240/dpr, 
                 height: height,
                 backgroundColor: 'white',
-                left: dpr >= 3 ? -200 : 0, 
-                top: dpr >= 3 ? 120 : 0,
+                left: dpr >= 2.5 ? -200 : 0, 
+                top: dpr >= 2.5 ? 120 : 0,
             }} 
         />
     )

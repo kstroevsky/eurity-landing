@@ -25,7 +25,7 @@ const LeftContentBlock = ({
 }: ContentBlockProps) => {
   return (
     <LeftContentSection>
-        {title && <h6 style={{textAlign:'center'}}>{title}</h6>}
+        {title && <h6 id={`${id}-header`} style={{textAlign:'center'}}>{title}</h6>}
         <Row justify="space-between" align="middle" id={id}>
           <Col lg={11} md={11} sm={12} xs={24}>
             <ContentWrapper style={title === 'Details' ? {padding: 0} : {}}>
