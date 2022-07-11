@@ -25,25 +25,25 @@ const LeftContentBlock = ({
 }: ContentBlockProps) => {
   return (
     <LeftContentSection>
-        {title ? <h6 style={{textAlign:'center'}}>{title}</h6> : <></> }
+        {title && <h6 style={{textAlign:'center'}}>{title}</h6>}
         <Row justify="space-between" align="middle" id={id}>
           <Col lg={11} md={11} sm={12} xs={24}>
-            <ContentWrapper>
-              <div className='textCard'>
-                <h6>{t(title1)}</h6>
-                <Content>{t(content1)}</Content>
+            <ContentWrapper style={title === 'Details' ? {padding: 0} : {}}>
+              <div className='textCard' style={title === 'Details' ? {padding: 0} : {}}>
+                {title1 && <h6>{t(title1)}</h6>}
+                {content1 && <Content>{t(content1)}</Content>}
                 <ServiceWrapper>
-                  <Row justify="center" style={{alignContent: "stretch"}}>
+                  <Row justify="center" style={{alignContent: "stretch", paddingBottom: title === 'Details' ? 0 : undefined}}>
                     {typeof section === "object" &&
                       section.map((item: any, id: number) => {
                         if ((id+1)%2 !== 0) {
                           return (
-                            <Col key={id} span={16} style={{minHeight:"18em"}}>
+                            <Col key={id} span={16}>
                               <SvgIcon src={item.icon} width="60px" height="60px" />
                               <MinTitle>{t(item.title)}</MinTitle>
-                              <MinPara>{t(item.content)}</MinPara>
+                              <MinPara style={title === 'Details' ? {marginBottom: '3em'} : {}}>{t(item.content)}</MinPara>
                             </Col>
-                          );
+                          )
                         }
                       })}
                   </Row>
@@ -52,22 +52,22 @@ const LeftContentBlock = ({
             </ContentWrapper>
           </Col>
           <Col lg={11} md={11} sm={11} xs={24}>
-            <ContentWrapper>
-              <div className='textCard'>
-                <h6>{t(title2)}</h6>
-                <Content>{t(content2)}</Content>
+            <ContentWrapper style={title === 'Details' ? {padding: 0} : {}}>
+              <div className='textCard' style={title === 'Details' ? {padding: 0} : {}}>
+                {title2 && <h6>{t(title2)}</h6>}
+                {content2 && <Content>{t(content2)}</Content>}
                 <ServiceWrapper>
-                  <Row justify="center" style={{alignItems: "flex-start"}} >
+                  <Row justify="center" style={{alignContent: "stretch", paddingBottom: title === 'Details' ? 0 : undefined}}>
                     {typeof section === "object" &&
                       section.map((item: any, id: number) => {
                         
                         if ((id+1)%2 === 0) {
                           console.log(id)
                           return (
-                            <Col key={id} span={16} style={{minHeight:"18em"}}>
+                            <Col key={id} span={16}>
                               <SvgIcon src={item.icon} width="60px" height="60px" />
                               <MinTitle>{t(item.title)}</MinTitle>
-                              <MinPara>{t(item.content)}</MinPara>
+                              <MinPara style={title === 'Details' ? {marginBottom: '3em'} : {}}>{t(item.content)}</MinPara>
                             </Col>
                           );
                         }

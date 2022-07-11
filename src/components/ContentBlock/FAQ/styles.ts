@@ -14,6 +14,7 @@ export const LeftContentSection = styled("section")`
   }
 
   @media only screen and (max-width: 767px) {
+    padding: 2rem 0 2rem;
     #sub-title {
       position: relative;
     }

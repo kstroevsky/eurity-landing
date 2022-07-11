@@ -19,7 +19,9 @@ export const Styles = createGlobalStyle`
     html,
     a {
         font-family: 'Motiva Sans Light', sans-serif;
-        overflow-x:hidden;
+        overflow-x: hidden;
+        touch-action: pan-y;
+        -ms-touch-action: pan-y;
     }
 
 
@@ -30,6 +32,8 @@ export const Styles = createGlobalStyle`
         outline: 0;
         background: #fff;
         overflow-x: hidden;
+        touch-action: pan-y;
+        -ms-touch-action: pan-y;
     }
 
     a:hover {
@@ -68,7 +72,8 @@ export const Styles = createGlobalStyle`
         }
       
         @media only screen and (max-width: 414px) {
-          font-size: 32px;
+          margin-bottom: 1em;
+          font-size: 38px;
         }
     }
 

@@ -24,12 +24,16 @@ export const LeftContentSection = styled("section")`
   }
 
   .textCard {padding: 10px 0;}
+
   @media only screen and (max-width: 1024px) {
-    padding: 4rem 0 4rem;
+    padding: 3rem 0 3rem;
   }
+
   @media only screen and (max-width: 575px) {
+    padding: 1rem 0 1rem;
+
     #mission>div {
-      margin-bottom:4em;
+      margin-bottom: 4em;
     }
   }
 `;
@@ -41,9 +45,7 @@ export const Content = styled("p")`
 export const ContentWrapper = styled("div")`
   position: relative;
   max-width: 540px;
-  padding:20px;
-
-  
+  padding: 20px;
 `;
 
 export const ServiceWrapper = styled("div")`
