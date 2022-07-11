@@ -14,7 +14,6 @@ import {
   Label,
   Outline,
   Span,
-  Title
 } from "./styles";
 
 const Header = ({ t }: any) => {

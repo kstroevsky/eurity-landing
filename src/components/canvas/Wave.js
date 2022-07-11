@@ -7,8 +7,7 @@ export default class Wave {
         this.xMove = Array.of(...new Array(this.count)).map((_, i) => 0.1*i)
         this.xSpeed = this.options.xSpeed;
         this.dpr = this.options.dpr;
-        this.i = 0;
-        this.firstY = 0;
+        
         this.resize()
     }
 
@@ -34,27 +33,10 @@ export default class Wave {
             for (let x = 0; x < 2185/this.dpr; x++) {
                 const scale = (Math.sin(x / this.sizes.width * Math.PI * 2 - Math.PI * 0.5) + 1) * 0.5;  
                 const y = Math.sin(x * 0.004 + this.xMove[i]) * this.amplitude * scale + this.sizes.height / 2.6;
-
-                if (this.i === 0) {
-                    if (i === 0) {
-                        if (x === 1000) {
-                            this.firstY = y;
-                        }
-                    }
-                }
-
-                if (i === 0) {
-                    if (x === 1000) {
-                        if (this.firstY === y) {
-                            console.log(this.firstY, y, this.i)
-                        }
-                    }
-                }
-
                 ctx.lineTo(x, y);
             }
         }
-        this.i++
+
         ctx.stroke();
     }
 

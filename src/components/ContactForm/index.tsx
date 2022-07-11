@@ -13,10 +13,7 @@ import { ContactContainer, FormGroup, Span, ButtonContainer } from "./styles";
 const Contact = ({ title, content, id, t }: ContactProps) => {
   const { values, errors, handleChange, handleSubmit } = useForm(
     validate
-  ) as any;
-
-  console.log(Zoom, typeof Zoom);
-  
+  ) as any;  
 
   const ValidationType = ({ type }: ValidationTypeProps) => {
     const ErrorMessage = errors[type];

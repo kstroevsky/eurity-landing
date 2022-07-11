@@ -5,7 +5,7 @@ export const ScrollUpContainer = styled("div")<any>`
   position: fixed;
   right: 30px;
   bottom: 30px;
-  z-index: 10;
+  z-index: 99999;
   cursor: pointer;
   background: rgb(241, 242, 243);
   text-align: center;
@@ -22,7 +22,7 @@ export const ScrollUpContainer = styled("div")<any>`
     background: rgb(224, 224, 224);
   }
 
-  @media screen and (max-width: 1240px) {
+  @media screen and (max-width: 860px) {
     display: none;
   }
 `;

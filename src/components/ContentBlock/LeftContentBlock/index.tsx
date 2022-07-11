@@ -13,8 +13,6 @@ import {
 
 const LeftContentBlock = ({
   title,
-  content,
-  icon,
   title1,
   content1,
   title2,
@@ -35,17 +33,16 @@ const LeftContentBlock = ({
                 <ServiceWrapper>
                   <Row justify="center" style={{alignContent: "stretch", paddingBottom: title === 'Details' ? 0 : undefined}}>
                     {typeof section === "object" &&
-                      section.map((item: any, id: number) => {
-                        if ((id+1)%2 !== 0) {
-                          return (
+                      section.map((item: any, id: number) => (
+                        (id+1) % 2 !== 0 && (
                             <Col key={id} span={16}>
                               <SvgIcon src={item.icon} width="60px" height="60px" />
                               <MinTitle>{t(item.title)}</MinTitle>
                               <MinPara style={title === 'Details' ? {marginBottom: '3em'} : {}}>{t(item.content)}</MinPara>
                             </Col>
                           )
-                        }
-                      })}
+                      ))
+                    }
                   </Row>
                 </ServiceWrapper>
               </div>
@@ -59,19 +56,16 @@ const LeftContentBlock = ({
                 <ServiceWrapper>
                   <Row justify="center" style={{alignContent: "stretch", paddingBottom: title === 'Details' ? 0 : undefined}}>
                     {typeof section === "object" &&
-                      section.map((item: any, id: number) => {
-                        
-                        if ((id+1)%2 === 0) {
-                          console.log(id)
-                          return (
+                      section.map((item: any, id: number) => (
+                        (id+1) % 2 === 0 && (
                             <Col key={id} span={16}>
                               <SvgIcon src={item.icon} width="60px" height="60px" />
                               <MinTitle>{t(item.title)}</MinTitle>
                               <MinPara style={title === 'Details' ? {marginBottom: '3em'} : {}}>{t(item.content)}</MinPara>
                             </Col>
-                          );
-                        }
-                      })}
+                          )
+                      ))
+                    }
                   </Row>
                 </ServiceWrapper>
               </div>

@@ -1,7 +1,5 @@
-import React, { useRef, useEffect } from 'react'
 import { Row, Col } from "antd";
 import { withTranslation } from "react-i18next";
-import { Button } from "../../../common/Button";
 import Block from "../../Block";
 import { ContentBlockProps } from "../types";
 import {
