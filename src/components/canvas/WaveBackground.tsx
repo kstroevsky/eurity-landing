@@ -1,28 +1,27 @@
-import React, { useEffect, useRef, useState }  from 'react';
+import React, { useEffect, useRef }  from 'react';
 import AnimationWaves from './animation';
 
 interface WaveComponentProps {
     height: number;
 }
 
+const isPortraitOrientation = (): boolean => {
+    try {
+        return window.screen.orientation.type === 'portrait-primary';
+    } catch {
+        return window.matchMedia("(orientation: portrait)").matches;
+    }
+}
+
 const WaveComponent: React.FC<WaveComponentProps> = ({ height }) => {
     const workerRef = useRef<Worker | null>(null);
     const canvasWorkerRef = useRef<HTMLCanvasElement>(null);
-    const [canvasWidth, setCanvasWidth] = useState<number>();
     const dpr = window.devicePixelRatio || 1;
-
-    useEffect(() => {
-        console.log(window.screen.orientation.type)
-        setCanvasWidth(window.screen.orientation.type === 'portrait-primary' && dpr >= 2.5 ? 4000/dpr : 3420/dpr)
-    }, [dpr])
 
     useEffect(() => {
         workerRef.current = new Worker(new URL('./wave.worker.js', import.meta.url));
         const rect = canvasWorkerRef.current!.getBoundingClientRect()
-        
         const kr = rect.width/window.innerWidth * 1.2;
-
-        console.log(3240/window.innerWidth, window.innerHeight, dpr, window.screen.orientation.type)
 
         try {
             const offscreen = canvasWorkerRef.current!.transferControlToOffscreen();
@@ -57,11 +56,11 @@ const WaveComponent: React.FC<WaveComponentProps> = ({ height }) => {
                 position:'absolute', 
                 zIndex:-1, 
                 opacity: 0.6,
-                width: 1600, 
+                width: window.innerWidth > 567 ? 1600 : window.innerWidth * 2, 
                 height: height,
                 backgroundColor: 'white',
                 left: dpr >= 2.5 ? -200 : 0, 
-                top: dpr >= 2.5 && window.screen.orientation.type === 'portrait-primary' ? 120 : 0,
+                top: dpr >= 2.5 && isPortraitOrientation() ? 120 : 0,
             }} 
         />
     )
