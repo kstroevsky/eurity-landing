@@ -36,7 +36,7 @@ const LeftContentBlock = ({
                       section.map((item: any, id: number) => (
                         (id+1) % 2 !== 0 && (
                             <Col key={id} span={16}>
-                              <SvgIcon src={item.icon} width="60px" height="60px" />
+                              <SvgIcon src={item.icon} height='60px' {...item.icon.includes('svg') && {width:"60px"}} />
                               <MinTitle>{t(item.title)}</MinTitle>
                               <MinPara style={title === 'Details' ? {marginBottom: '3em'} : {}}>{t(item.content)}</MinPara>
                             </Col>
@@ -53,13 +53,13 @@ const LeftContentBlock = ({
               <div className='textCard' style={title === 'Details' ? {padding: 0} : {}}>
                 {title2 && <h6>{t(title2)}</h6>}
                 {content2 && <Content>{t(content2)}</Content>}
-                <ServiceWrapper>
+                <ServiceWrapper >
                   <Row justify="center" style={{alignContent: "stretch", paddingBottom: title === 'Details' ? 0 : undefined}}>
                     {typeof section === "object" &&
                       section.map((item: any, id: number) => (
                         (id+1) % 2 === 0 && (
                             <Col key={id} span={16}>
-                              <SvgIcon src={item.icon} width="60px" height="60px" />
+                              <SvgIcon src={item.icon} height="60px" {...item.icon.includes('svg') && {width:"60px"}} />
                               <MinTitle>{t(item.title)}</MinTitle>
                               <MinPara style={title === 'Details' ? {marginBottom: '3em'} : {}}>{t(item.content)}</MinPara>
                             </Col>

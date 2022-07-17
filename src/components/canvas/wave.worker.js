@@ -1,5 +1,5 @@
 /* eslint no-restricted-globals: 0 */
-import { AnimationWaves } from './animation';
+import AnimationWaves from './animation';
 
 let animationWorker = null;
 let canvas, canvasCtx;

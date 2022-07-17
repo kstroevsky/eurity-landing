@@ -5,14 +5,12 @@ import AboutContent from "../../content/AboutContent.json";
 import FAQContent from "../../content/FAQContent.json";
 
 const Container = lazy(() => import("../../common/Container"));
-const ScrollToTop = lazy(() => import("../../common/ScrollToTop"));
 const ContentBlock = lazy(() => import("../../components/ContentBlock"));
 const FAQ = lazy(() => import("../../components/ContentBlock/FAQ"));
 
 const Home = () => {
   return (
     <Container>
-      <ScrollToTop />
       <ContentBlock
         type="right"
         title={IntroContent.title}

@@ -1,17 +1,5 @@
-import React, { RefObject, useEffect, useRef }  from 'react';
-import { AnimationWaves } from './animation';
-
-// import waveWorker from './wave.worker';
-
-const initCanvas = (worker: RefObject<Worker | null>, canvas: RefObject<HTMLCanvasElement>) => {
-    (worker.current as Worker) = new Worker(new URL('./wave.worker.js', import.meta.url));
-    const offscreen = canvas.current!.transferControlToOffscreen();
-
-    worker.current!.postMessage(
-        { msg: 'init', canvas: offscreen }, 
-        [offscreen]
-    );
-}
+import React, { useEffect, useRef, useState }  from 'react';
+import AnimationWaves from './animation';
 
 interface WaveComponentProps {
     height: number;
@@ -20,13 +8,21 @@ interface WaveComponentProps {
 const WaveComponent: React.FC<WaveComponentProps> = ({ height }) => {
     const workerRef = useRef<Worker | null>(null);
     const canvasWorkerRef = useRef<HTMLCanvasElement>(null);
+    const [canvasWidth, setCanvasWidth] = useState<number>();
     const dpr = window.devicePixelRatio || 1;
+
+    useEffect(() => {
+        console.log(window.screen.orientation.type)
+        setCanvasWidth(window.screen.orientation.type === 'portrait-primary' && dpr >= 2.5 ? 4000/dpr : 3420/dpr)
+    }, [dpr])
 
     useEffect(() => {
         workerRef.current = new Worker(new URL('./wave.worker.js', import.meta.url));
         const rect = canvasWorkerRef.current!.getBoundingClientRect()
         
         const kr = rect.width/window.innerWidth * 1.2;
+
+        console.log(3240/window.innerWidth, window.innerHeight, dpr, window.screen.orientation.type)
 
         try {
             const offscreen = canvasWorkerRef.current!.transferControlToOffscreen();
@@ -54,24 +50,6 @@ const WaveComponent: React.FC<WaveComponentProps> = ({ height }) => {
 
     }, []);
 
-    // TODO: add resize func
-    // useEffect(() => {
-    //     const canvas = canvasRef.current;
-
-    //     const ctx = canvas.getContext('bitmaprenderer');
-    //     const offscreenCanvas = new OffscreenCanvas(canvas.width, canvas.height);
-    //     const worker = new Worker(new URL('./worker.js', import.meta.url));
-
-    //     worker.postMessage({msg: 'init', canvas: offscreenCanvas}, [offscreenCanvas]);
-
-    //     worker.addEventListener('message', function(ev) {
-    //         if(ev.data.msg === 'render') {
-    //           ctx.transferFromImageBitmap(ev.data.bitmap);
-    //         }
-    //     }
-
-    // }, []);
-
     return (
         <canvas
             ref={canvasWorkerRef}
@@ -79,14 +57,14 @@ const WaveComponent: React.FC<WaveComponentProps> = ({ height }) => {
                 position:'absolute', 
                 zIndex:-1, 
                 opacity: 0.6,
-                width: 3240/dpr, 
+                width: 1600, 
                 height: height,
                 backgroundColor: 'white',
                 left: dpr >= 2.5 ? -200 : 0, 
-                top: dpr >= 2.5 ? 120 : 0,
+                top: dpr >= 2.5 && window.screen.orientation.type === 'portrait-primary' ? 120 : 0,
             }} 
         />
     )
 }
 
-export default WaveComponent; 
+export default React.memo(WaveComponent); 

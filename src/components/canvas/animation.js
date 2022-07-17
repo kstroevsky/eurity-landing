@@ -1,6 +1,6 @@
 import Wave from "./Wave";
 
-export class AnimationWaves {
+class AnimationWaves {
     constructor(context, sizes, dpr) {
         this.context = context;
         this.sizes = sizes;
@@ -43,3 +43,5 @@ export class AnimationWaves {
 
     clear() {this.waves = []}
 }
+
+export default AnimationWaves;
