@@ -48,7 +48,7 @@ const LeftContentBlock = ({
               </div>
             </ContentWrapper>
           </Col>
-          <Col lg={11} md={11} sm={11} xs={24}>
+          <Col lg={11} md={11} sm={12} xs={24}>
             <ContentWrapper style={title === 'Details' ? {padding: 0} : {}}>
               <div className='textCard' style={title === 'Details' ? {padding: 0} : {}}>
                 {title2 && <h6>{t(title2)}</h6>}
